@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="img">
+  <img src="http://www.mrwallpaper.com/wallpapers/Yamaha-Motorcycle-YZF-R6.jpg?1379248260" />
+  <img src="http://www.usabobbers.com/wp-content/uploads/2012/01/Yamaha-XS650-Lime-Green-Bobber-Motorcycle.jpeg?1379248260" />
+  <img src="http://wallpoper.com/images/00/38/49/40/american-cars_00384940.jpg?1379248260" />
+  <img src="http://wallpoper.com/images/00/26/14/38/cars-saleen_00261438.jpg?1379248260" />
+</div>  
+<script type="text/javascript">
+	var count=0;
+	var sum = $("img").length;
+	$("img").load(function(){
+		count++;
+		console.log("第"+count+"張圖已讀");
+		if(count == sum){
+			console.log("圖片讀取完成");
+			NProgress.done();
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	img {
+	height: 142px;
+	margin-top: 15px;
+	margin-left: 2px;
+	margin-right: 2px;
+	border: none;
+	float: left;
+}
+
+</style>
+<script src="jquery-2.0.2.js"></script>
+<link rel="stylesheet" type="text/css" href="nprogress.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="nprogress.js"></script>
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<button data-value="test.html">Ajax 讀取圖片</button>	
+<button data-value="http://localhost:8008/">Ajax 頁面切換</button>	
+<div id="mian"></div>
+<!--<iframe src="test.html" frameBorder="0"  width="100%" height="100%" scrolling="no"></iframe>-->
+<script type="text/javascript">
+
+	$(document).ajaxStart(function() {
+	});
+
+	$(document).ajaxComplete(function(event, xhr, settings) {
+	});
+
+$(document).ready(function() {
+	$("button").on("click",function(){
+		
+
+		var _url = $(this).attr("data-value");
+		
+		$.ajax({
+				url: _url,
+				type: 'get',
+				data: {},
+				cache : false,
+				dataType: "html",
+				beforeSend: function(){
+					$("div").html("");
+					NProgress.start();
+				},
+				complete: function(){
+
+					/*if(_url == "test.html"){
+						//alert(typeof(_url));
+					}else{
+						NProgress.done();
+					}*/
+					_url == "test.html" ? "test.html" : NProgress.done();
+				},
+				success: function (data) {
+					$("#mian").html(data);
+				}
+			});
+	})
+});
+
+</script>
+
+</body>
+</html>
